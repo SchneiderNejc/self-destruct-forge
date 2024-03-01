@@ -1,4 +1,0 @@
-# Everything
-/lib
-/cache
-/out
