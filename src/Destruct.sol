@@ -17,4 +17,11 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 contract Destruct {
     address public immutable owner;
     IERC20 public immutable token;
+    /// @param _token ERC20 token address that will be refunded upon selfdestruct
+    constructor(address _token) {
+        owner = msg.sender;
+        require(_token != owner, "Cant be owner");
+        require(_token != address(0), "Cant be zero");
+        token = IERC20(_token);
+    }
 }
