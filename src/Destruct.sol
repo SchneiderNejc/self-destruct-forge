@@ -24,4 +24,9 @@ contract Destruct {
         require(_token != address(0), "Cant be zero");
         token = IERC20(_token);
     }
+
+    modifier onlyOwner() {
+        require(owner == msg.sender, "Caller is not the owner");
+        _;
+    }
 }
