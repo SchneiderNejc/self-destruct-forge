@@ -42,7 +42,10 @@ contract Destruct {
         uint balance = token.balanceOf(address(this));
         require(token.transfer(recipient, balance), "Transfer failed");
 
+        // Event has to be emitted before selfdestruct
+        emit Destroy(recipient, address(this).balance, balance);
 
         selfdestruct(recipient);
     }  
+
 }
