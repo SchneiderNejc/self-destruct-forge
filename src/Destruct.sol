@@ -36,7 +36,15 @@ contract Destruct {
         require(owner == msg.sender, "Caller is not the owner");
         _;
     }
+
+    /// @notice Contract can receive native and custom ERC20, ERC721
+    /// @notice Sending any token other then the one defined in
+    ///         constructor will result in permanent loss.
     receive() external payable {}
+
+    /// @notice Initiates selfdestruct, transfering remaining ethers
+    ///         and tokens to recipient.
+    /// @param recipient Receiver of ether and pre-defined erc20 tokens.
     function destroy(address payable recipient) external onlyOwner() {
         // Transfer all ERC-20 tokens to the recipient
         uint balance = token.balanceOf(address(this));
