@@ -15,4 +15,6 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
  *       to contract, so only the one specified in the constructor will be refunded.
  */
 contract Destruct {
+    address public immutable owner;
+    IERC20 public immutable token;
 }
