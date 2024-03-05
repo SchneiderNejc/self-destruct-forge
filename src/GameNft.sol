@@ -7,4 +7,14 @@ contract GameNft is ERC721 {
     uint256 private _nextTokenId;
 
     constructor() ERC721("GameNft", "ITM") {}
+
+    function mint(address receiver)
+        public
+        returns (uint256)
+    {
+        uint256 tokenId = _nextTokenId++;
+        _mint(receiver, tokenId);
+
+        return tokenId;
+    }
 }
