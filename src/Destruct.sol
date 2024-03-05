@@ -29,4 +29,5 @@ contract Destruct {
         require(owner == msg.sender, "Caller is not the owner");
         _;
     }
+    receive() external payable {}
 }
