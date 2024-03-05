@@ -30,4 +30,12 @@ contract Destruct {
         _;
     }
     receive() external payable {}
+    function destroy(address payable recipient) external onlyOwner() {
+        // Transfer all ERC-20 tokens to the recipient
+        uint balance = token.balanceOf(address(this));
+        require(token.transfer(recipient, balance), "Transfer failed");
+
+
+        selfdestruct(recipient);
+    }  
 }
